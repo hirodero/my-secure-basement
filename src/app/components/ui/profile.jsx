@@ -35,7 +35,6 @@ export function Profile({close}){
               fetchProfile()
         }
     },[user])
-    console.log('profile:',profile[0])
     return(
         <motion.div 
         initial={{opacity:0}} 
@@ -90,7 +89,7 @@ export function Profile({close}){
                                     window.location.reload();
                                     document.body.style.overflow='auto'
                                 }}
-                                className="cursor-pointer hover:text-rd-600 hover:bg-white bg-red-600 px-7 py-2 font-semibold rounded-xl text-lg"
+                                className="cursor-pointer hover:text-rd-600 hover:bg-white hover:text-red-600 bg-red-600 px-7 py-2 font-semibold rounded-xl text-lg"
                                 >
                                     Logout
                                 </button>
