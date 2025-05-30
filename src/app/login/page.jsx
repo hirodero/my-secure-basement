@@ -6,8 +6,9 @@ export default function Login() {
   const [data,setData] =  useState({Email:'',Password:''})
   const router = useRouter()
   const submit =()=>{
+    const toastId = toast.loading('Logging in..')
     if (!data.Email.includes('@') || !data.Email.includes('.')){
-      toast.error('Tolong penuhi format email yang benar')
+      toast.error('Please provide a proper email format',{id:toastId})
     }
     else{
       async function fetchUser(){
@@ -26,11 +27,11 @@ export default function Login() {
         if (response.ok){
           const result = await response.json();
           if (!result.data || result.data.length === 0) {
-          toast.error('Email atau password salah');
+          toast.error('Wrong email or password',{id:toastId});
           return;
         }
           localStorage.setItem('user', JSON.stringify(result.data[0]));
-          toast.success('berhasil login')
+          toast.success('Login success',{id:toastId})
           router.push('/')
           return response
         }
