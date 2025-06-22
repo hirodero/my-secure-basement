@@ -10,7 +10,6 @@ export function Profile({close,open}){
     const [newName,setNewName] = useState('')
     async function fetchUser(){
         const data = JSON.parse(localStorage.getItem('user'))
-        console.log('data',data)
             const payload = JSON.stringify({
               Email:data.Email,
               Password:data.Password
@@ -25,7 +24,6 @@ export function Profile({close,open}){
             })
             if (response.ok){
               const result = await response.json();
-              console.log('res',result.data[0])
               localStorage.setItem('user', JSON.stringify(result.data[0]));
               return response
             }
@@ -56,7 +54,6 @@ export function Profile({close,open}){
                 open()
             }, 500);
             fetchUser()
-            console.log(localStorage.getItem('user'))
         }
               
     }
